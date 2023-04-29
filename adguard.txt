@@ -6,6 +6,7 @@
 ! Remove URL tracking params
 !
 ||channelnewsasia.com$removeparam=cid
+||todayonline.com$removeparam=cid
 !
 ! Remove annoyances
 !
