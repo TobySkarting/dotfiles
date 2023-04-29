@@ -1,2 +1,12 @@
-dcard.tw#%#//scriptlet('prevent-addEventListener', 'wheel')
+! Title: Toby's Personal Filter
+! Description: This filter is necessary for quality ad blocking.
+! Homepage: https://github.com/TobySkarting/dotfiles
+! License: https://github.com/TobySkarting/dotfiles/blob/master/LICENSE
+!
+! Remove URL tracking params
+!
 ||channelnewsasia.com$removeparam=cid
+!
+! Remove annoyances
+!
+dcard.tw#%#//scriptlet('prevent-addEventListener', 'wheel')
