@@ -1,0 +1,2 @@
+dcard.tw#%#//scriptlet('prevent-addEventListener', 'wheel')
+||channelnewsasia.com$removeparam=cid
