@@ -1,9 +1,14 @@
 // ==UserScript==
 // @name         Medium for Free
 // @namespace    tobyskarting
-// @version      0.3
-// @description  Redirect all URLs hosted on medium.com to unblocker
+// @version      0.4
 // @author       TobySkarting
+// @description  Redirect all URLs hosted on medium.com to unblocker
+// @license      AGPL-3.0-or-later
+// @homepage     https://github.com/TobySkarting
+// @supportURL   https://github.com/TobySkarting/dotfiles
+// @updateURL    https://github.com/TobySkarting/dotfiles/raw/main/medium-for-free.js
+// @downloadURL  https://github.com/TobySkarting/dotfiles/raw/main/medium-for-free.js
 // @match        *://medium.com/*
 // @match        *://*.medium.com/*
 // @match        *://towardsaws.com/*
@@ -90,18 +95,35 @@
 // @match        *://golang.thisweekin.io/*
 // @match        *://insightsndata.com/*
 // @match        *://artificialcorner.com/*
-// @license      The Unlicense
 // @run-at       document-start
 // ==/UserScript==
 (function() {
     "use strict";
-    let { host, href, pathname } = location;
-    function redirect(domain) {
-        let redirectUrl = href.replace(host, domain);
-        console.log(redirectUrl);
+    let previousUrl = '';
+    function redirect() {
+        let { host, href, pathname } = location;
+        if (!pathname.match(/^\/[^\/]+-\w+$/)) {
+            return;
+        }
+        let redirectUrl = href.replace(host, 'scribe.rip');
         return location.replace(redirectUrl);
     }
-    if (pathname.match(/^\/[\w-]+-\w{12}$/)) {
-        redirect('scribe.rip');
+
+    function mutationsObs(mutations) {
+        if (location.href !== previousUrl) {
+            previousUrl = location.href;
+            console.log(`URL changed to ${location.href}`);
+        }
     }
+
+    let observer = new MutationObserver(redirect);
+
+    window.addEventListener('load', redirect);
+
+    window.addEventListener('beforeunload', function (event) {
+        observer.disconnect();
+    });
+    
+    const config = {subtree: true, childList: true};
+    observer.observe(document, config);
 })();
