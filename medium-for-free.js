@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Medium for Free
 // @namespace    tobyskarting
-// @version      0.4
+// @version      0.5
 // @author       TobySkarting
 // @description  Redirect all URLs hosted on medium.com to unblocker
 // @license      AGPL-3.0-or-later
@@ -102,7 +102,7 @@
     let previousUrl = '';
     function redirect() {
         let { host, href, pathname } = location;
-        if (!pathname.match(/^\/[^\/]+-\w+$/)) {
+        if (!pathname.match(/\/[^\/]+-[0-9a-f]{8,}$/)) {
             return;
         }
         let redirectUrl = href.replace(host, 'scribe.rip');
