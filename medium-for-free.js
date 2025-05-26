@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Medium for Free
 // @namespace    tobyskarting
-// @version      0.5
+// @version      0.6
 // @author       TobySkarting
 // @description  Redirect all URLs hosted on medium.com to unblocker
 // @license      AGPL-3.0-or-later
@@ -105,7 +105,7 @@
         if (!pathname.match(/\/[^\/]+-[0-9a-f]{8,}$/)) {
             return;
         }
-        let redirectUrl = href.replace(host, 'scribe.rip');
+        let redirectUrl = href.replace(host, 'freedium.cfd');
         return location.replace(redirectUrl);
     }
 
