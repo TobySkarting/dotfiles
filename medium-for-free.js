@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Medium for Free
 // @namespace    tobyskarting
-// @version      0.6
+// @version      0.7
 // @author       TobySkarting
 // @description  Redirect all URLs hosted on medium.com to unblocker
 // @license      AGPL-3.0-or-later
