@@ -95,6 +95,7 @@
 // @match        *://golang.thisweekin.io/*
 // @match        *://insightsndata.com/*
 // @match        *://artificialcorner.com/*
+// @match        *://freedium.cfd/*
 // @run-at       document-start
 // ==/UserScript==
 (function() {
@@ -105,7 +106,7 @@
         if (!pathname.match(/\/[^\/]+-[0-9a-f]{8,}$/)) {
             return;
         }
-        let redirectUrl = href.replace(host, 'freedium.cfd');
+        let redirectUrl = href.replace(host, 'freedium-mirror.cfd');
         return location.replace(redirectUrl);
     }
 
